@@ -1,0 +1,313 @@
+\documentclass[12pt, pdf, hyperref={unicode},handout]{beamer}
+
+
+\mode<presentation>
+{
+  \usetheme{Madrid}       % or try default, Darmstadt, Warsaw, ... Madrid
+  \usecolortheme{orchid} % or try albatross, beaver, crane, ...default
+  \usefonttheme{serif}    % or try default, structurebold, ... serif
+  \usefonttheme{professionalfonts}
+  \setbeamertemplate{navigation symbols}{}
+   \setbeamertemplate{caption}[numbered]
+} 
+\usepackage{setspace}
+\usepackage[english,russian]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{hyperref}
+\graphicspath{{images/}}
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+\colorlet{beamer@blendedblue}{green!40!black}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
+
+
+\setbeamertemplate{caption}[numbered]
+
+\usepackage{ragged2e}
+\renewcommand{\raggedright}{\leftskip=0pt \rightskip=0pt plus 0cm}
+
+\usepackage{concmath}
+
+
+\usepackage[orientation=landscape,size=A4,scale=4]{beamerposter}
+
+\title[Искусственный интеллект]{Наше время — начало эры искусственного интеллекта}
+\author[Артамонов Ю.Н.]{\small{\textit{Артамонов Юрий Николаевич \\ доктор технических наук, профессор кафедры \\ <<Экономика городского хозяйства и жилищного права>>}}}
+\date[]{}
+\institute[МГУУ]{\textbf{\textit{Государственное автономное образовательное учреждение высшего образования \\ <<Московский городской университет управления Правительства Москвы имени Ю.М. Лужкова>>}}}
+\titlegraphic{\includegraphics[width=4cm]{mguu}}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% These three lines create an automatically generated table of contents.
+\begin{frame}{Содержание}
+  \tableofcontents
+\end{frame}
+
+\section{Основоположники направления ИИ}
+\begin{frame}{\Large{Основоположники направления ИИ}}
+\begin{block}
+  
+  \small{
+\begin{center}
+\begin{tabular}{ p{0.2\textwidth} p{0.25\textwidth} p{0.23\textwidth} p{0.23\textwidth}}
+\includegraphics [scale=0.5]{ris2.eps}&\includegraphics [scale=0.5]{ris1.eps}&\includegraphics [scale=1.35]{ris3.eps}&\includegraphics [scale=0.5]{ris4.eps}\\
+\textbf{Алан Тьюринг} &  \textbf{Джон Маккарти} & \textbf{Фрэнк Розенблатт}& \textbf{Марвин Мински} \\  
+1950 год:  & 1956 год: & 1958—1960:& 1967 год:\\
+ \footnotesize{ИИ будет создан, когда человек общаясь с машиной, не сможет этого распознать.}  &\footnotesize{Проблема состоит в том, что пока мы не можем в целом определить, какие вычислительные процедуры мы хотим называть интеллектуальными. Поэтому под интеллектом  понимается только вычислительная составляющая способности достигать целей в мире.}  &  \footnotesize{Нельзя сказать, что мы точно воспроизводим работу человеческого мозга, - но пока перцептрон ближе всего к истине.}&\footnotesize{В течение поколения проблема создания ИИ будет практически решена. ... Через три-восемь лет у нас появится машина с интеллектом среднего человека.}
+\end{tabular}
+\end{center}
+ 
+  }
+  \end{block}
+
+\end{frame}
+\section{Перцептрон}
+\begin{frame}{\Large{Перцептрон}}
+\begin{block}
+  
+  \small{ 
+    \begin{figure}[htb] 
+      \centering
+      \includegraphics [scale=0.5]{ris5.eps}
+    \end{figure} 
+  }
+  \end{block}
+
+\end{frame}
+
+\section{Функциональное, логическое программирование}
+\begin{frame}{\Large{Рекурсия}}
+\begin{block}{Идея рекурсии}
+  
+  \small{ 
+    Пусть требуется реализовать вычисление $$sum(n)=1+2+3+\ldots +n$$
+\begin{center}
+  \begin{tabular}{ p{0.5\textwidth} p{0.5\textwidth}}
+    Реализация без рекурсии&Реализация с рекурсией\\
+  \begin{algorithmic}[1]
+\Function{sum}{$n$}
+\State $result\gets 0, i\gets 1$
+\While{$i\leq n$}
+\State $result\gets result+i$
+\State $i\gets i+1$
+\EndWhile
+\State \textbf{return} $result$
+\EndFunction
+\end{algorithmic} &
+ \begin{algorithmic}[1]
+\Function{sum}{$n$}
+\If {$n=0$}
+\State \textbf{return} $0$
+\Else
+\State \textbf{return} $sum(n-1)+n$
+\EndIf
+\EndFunction
+\end{algorithmic}
+    \\
+\end{tabular}
+\end{center}
+ 
+  }
+  \end{block}
+
+\end{frame}
+
+\begin{frame}{\Large{Рекурсия}}
+\begin{block}{Идея рекурсии - попытка понять}
+  
+  \small{ 
+$$sum(n)=sum(n-1)+n$$
+$$sum(n-1)=sum(n-2)+(n-1)$$
+$$\ldots$$
+$$sum(1)=sum(0)+1$$
+$$sum(0)=0$$
+\begin{center}
+  \begin{tabular}{ p{0.25\textwidth} p{0.7\textwidth}}
+    \textbf{Задача о ханойской башне}& \textbf{Рекурсивный алгоритм}\\
+  \begin{figure}[htb] 
+    \centering
+    \includegraphics [scale=0.3] {hanoy.eps}
+  \end{figure} &
+  Предположим, что мы уже научились перекладывать n-1 колец, тогда алгоритм перекладывания n колец такой:
+    \begin{itemize}
+    \item{перекладываем на средний колышек n-1 колец }
+    \item{перекладываем на крайний правый колышек самое большо кольцо}
+    \item{перекладываем на крайний правый колышек n-1 колец }
+    \item{Последовательно уменьшая n мы приходим к одному кольцу, алгоритм перекладывания которого очевиден.}
+    \end{itemize}\\
+    \end{tabular}
+\end{center}
+  }
+  \end{block}
+
+\end{frame}
+
+\begin{frame}{\Large{Функциональное программирование - символьные вычисления}}
+\begin{block}{}
+  
+  \small{ 
+    \begin{figure}[htb] 
+      \centering
+      \includegraphics [scale=0.8]{ris51.eps}
+    \end{figure}
+
+    \href{https://www.wolframalpha.com}{Mathematica — система компьютерной алгебры:} https://www.wolframalpha.com
+  }
+  \end{block}
+
+\end{frame}
+
+\begin{frame}{\Large{Логическое программирование - Пролог}}
+\begin{block}
+  
+  \small{ 
+    \begin{figure}[htb] 
+      \centering
+      \includegraphics [scale=0.9]{ris6.eps}
+    \end{figure} 
+  }
+  \end{block}
+
+\end{frame}
+
+\begin{frame}{\Large{Логическое программирование - Пролог}}
+\begin{block}{Задача про козу, волка и капусту}
+  
+  \small{
+    Старик должен переправить на другой берег реки волка, козу и капусту. При этом существует два ограничения:
+    \begin{itemize}
+  \item{Его лодка такова, что за один раз может вместе с ним перевезти только кого-то одного: либо волка, либо козу, либо капусту.}
+  \item{Звери мирно ведут себя только в присутствии старика. Стоит только ему отлучиться, как волк тут же съест козу или коза съест капусту.}
+    
+   \href{https://rextester.com/l/prolog_online_compiler}{Пролог онлайн}: https://rextester.com/l/prolog\_online\_compiler
+  \end{itemize}
+    \begin{figure}[htb] 
+      \centering
+      \includegraphics [scale=0.6]{ris7.eps}
+    \end{figure} 
+  }
+  
+  \end{block}
+
+\end{frame}
+
+\section{Методы машинного обучения}
+\begin{frame}{\Large{Методы машинного обучения}}
+  
+\begin{block}
+
+  \small{
+
+    Компьютеру передаются входные данные и сообщается, что должно получиться при таких входах на выходе (\textbf{обучение с учителем}) - \textbf{задачи классификации}.
+    Компьютеру передаются входные данные и он сам находит в них скрытые закономерности (\textbf{обучение без учителя}) - \textbf{задачи кластеризации}.
+
+    \begin{itemize}
+    \item{Наивный байесовский классификатор}
+    \item{Логистическая регрессия}
+    \item{k-means алгоритм}
+    \item{Метод опорных векторов}
+    \item{Метод главных векторов}
+    \item{Деревья решений}
+    \item{Многие другие методы}
+      
+    \end{itemize}
+}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{\Large{Демонстрация метода k-means}}
+  
+\begin{block}
+
+  \small{
+\begin{figure}[htb] 
+      \centering
+      \includegraphics [scale=0.8]{ris8.eps}
+    \end{figure}
+
+Ссылка на RStudio online    \href{https://rstudio.cloud/}{rstudio.cloud}: https://rstudio.cloud/
+}
+\end{block}
+
+\end{frame}
+
+\section{Современное состояние, тенденции, выводы}
+\begin{frame}{\Large{Современное состояние, тенденции, выводы}}
+  
+\begin{block}{Глубокие нейронные сети}
+
+  \small{
+  \begin{figure}[htb] 
+      \centering
+      \includegraphics [scale=0.8]{ris9.eps}
+    \end{figure}
+}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{\Large{Современное состояние, тенденции, выводы}}
+  
+\begin{block}{Пример использования нейросети}
+
+  \small{
+  \begin{figure}[htb] 
+      \centering
+      \includegraphics [scale=0.8]{ris10.eps}
+    \end{figure}
+}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{\Large{Современное состояние, тенденции, выводы}}
+  
+\begin{block}
+
+  \small{
+    Искусственный интеллект — это область информатики, которая занимается разработкой компьютерных систем, обладающих возможностями, которые мы традиционно связываем с человеческим разумом, — понимание языка, обучение, способность рассуждать, решать проблемы и т. д.
+
+    \textbf{Сильный ИИ} - интеллект по силе равный человеку во многих областях деятельности.
+    
+    \textbf{Cлабый ИИ} - интеллект подобный человеку или превосходящий его, который демонстрирует машина в узкой предметной области.
+
+    \begin{itemize}
+    \item{Естественные языки, речевые технологии: распознавание текстов их автоматический перевод на друие языки; распознавание речи и ее генерация.}
+    \item{Компьютерное зрение: нахождение, отслеживание, классификация объектов, извлечение данных из изображений.}
+    \item{Анализ данных (Data Science): извлечение знаний, находение закономерности в данных, прогнозирование.}
+    \end{itemize}
+    
+}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{\Large{Современное состояние, тенденции, выводы}}
+  
+\begin{block}{Инициативы в России}
+
+  \small{
+
+    Президиум правительственной комиссии по цифровому развитию на заседании 27 августа 2020 года утвердил федеральный проект <<Искусственный интеллект>> национальной программы <<Цифровая экономика Российской Федерации>> №D7-2020/001.
+
+    \textbf{Финансовые показатели:}
+    
+    На реализацию проекта планируется выделить 36,3 млрд руб. (22,5 млрд — из средств нацпрограммы, 6,91 млрд — из госпрограммы <<Развитие электронной и радиоэлектронной промышленности>>, 6,9 млрд руб. — из внебюджетных источников).
+    
+}
+\end{block}
+
+\end{frame}
+
+
+\end{document}
+

@@ -1,0 +1,27 @@
+\frametitle{\Large {Пример использования нейронных сетей: решение задачи <<Классификация ирисов>>}}
+\begin{block}{}
+
+  \small{
+  \begin{lstlisting}[language=R]
+x<-c(1:150)
+y<-sample(x,floor(150*0.8))
+z<-setdiff(x,y)
+D_teach<-iris[y,]
+D_test<-iris[z,]
+nn=neuralnet(class ~ sl + sw + pl + pw,data=
+D_teach, hidden=c(3,4,5))
+plot(nn)
+
+g<-predict(nn,D_teach)
+colnames(g)<-c("setosa","versicolor","virginica")
+View(data.frame(D_teach$class,g))
+
+g<-predict(nn,D_test)
+colnames(g)<-c("setosa","versicolor","virginica")
+View(data.frame(D_test$class,g))
+
+\end{lstlisting}
+
+}
+
+ \end{block}
